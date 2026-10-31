@@ -1,0 +1,159 @@
+SQL> CREATE TABLE Students (
+  2      Stud_ID NUMBER,
+  3      Stud_Name VARCHAR2(50),
+  4      Department VARCHAR2(20),
+  5      Marks NUMBER
+  6  );
+CREATE TABLE Students (
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> INSERT INTO Students VALUES
+  2  (101, 'Anu', 'CSE', 85);
+INSERT INTO Students VALUES
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> 
+SQL> INSERT INTO Students VALUES
+  2  (102, 'Bindu', 'ECE', 90);
+INSERT INTO Students VALUES
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> 
+SQL> INSERT INTO Students VALUES
+  2  (103, 'Chitra', 'IT', 78);
+INSERT INTO Students VALUES
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> 
+SQL> INSERT INTO Students VALUES
+  2  (104, 'Divya', 'CSE', 95);
+INSERT INTO Students VALUES
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> 
+SQL> INSERT INTO Students VALUES
+  2  (105, 'Elan', 'MECH', 80);
+INSERT INTO Students VALUES
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> 
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SELECT * FROM Students;
+
+STUDENT_ID STUDENT_NAME                                          DEPT_ID        
+---------- -------------------------------------------------- ----------        
+       101 Anu                                                         1        
+       102 Bindu                                                       2        
+       103 Chitra                                                      3        
+       104 Divya                                                       1        
+       105 Elan                                                        4        
+
+SQL> CREATE INDEX idx_Stud_ID
+  2  ON Students(Stud_ID);
+ON Students(Stud_ID)
+            *
+ERROR at line 2:
+ORA-00904: "STUD_ID": invalid identifier 
+
+
+SQL> CREATE INDEX idx_Stud_ID
+  2  ON Students(Stud_ID);
+ON Students(Stud_ID)
+            *
+ERROR at line 2:
+ORA-00904: "STUD_ID": invalid identifier 
+
+
+SQL> SELECT *
+  2  FROM Students
+  3  WHERE Stud_ID = 101;
+WHERE Stud_ID = 101
+      *
+ERROR at line 3:
+ORA-00904: "STUD_ID": invalid identifier 
+
+
+SQL> CREATE INDEX idx_stud_dept_marks
+  2  ON Students(Department, Marks);
+ON Students(Department, Marks)
+                        *
+ERROR at line 2:
+ORA-00904: "MARKS": invalid identifier 
+
+
+SQL> CREATE UNIQUE INDEX idx_unique_stud
+  2  ON Students(Stud_ID);
+ON Students(Stud_ID)
+            *
+ERROR at line 2:
+ORA-00904: "STUD_ID": invalid identifier 
+
+
+SQL> DROP INDEX idx_Stud_ID;
+DROP INDEX idx_Stud_ID
+           *
+ERROR at line 1:
+ORA-01418: specified index does not exist 
+
+
+SQL> SELECT
+  2      INDEX_NAME,
+  3      TABLE_NAME,
+  4      UNIQUENESS
+  5  FROM USER_INDEXES
+  6  WHERE TABLE_NAME = 'STUDENTS';
+
+INDEX_NAME                     TABLE_NAME                     UNIQUENES         
+------------------------------ ------------------------------ ---------         
+SYS_C0034647                   STUDENTS                       UNIQUE            
+
+SQL> SELECT
+  2      INDEX_NAME,
+  3      COLUMN_NAME
+  4  FROM USER_IND_COLUMNS
+  5  WHERE TABLE_NAME = 'STUDENTS';
+
+INDEX_NAME                                                                      
+------------------------------                                                  
+COLUMN_NAME                                                                     
+--------------------------------------------------------------------------------
+SYS_C0034647                                                                    
+STUDENT_ID                                                                      
+                                                                                
+
+SQL> DROP INDEX idx_unique_stud;
+DROP INDEX idx_unique_stud
+           *
+ERROR at line 1:
+ORA-01418: specified index does not exist 
+
+
+SQL> DROP INDEX idx_stud_dept_marks;
+DROP INDEX idx_stud_dept_marks
+           *
+ERROR at line 1:
+ORA-01418: specified index does not exist 
+
+
+SQL> spool off
