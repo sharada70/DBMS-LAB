@@ -1,0 +1,487 @@
+SQL> CREATE TABLE Students (
+  2      student_id NUMBER PRIMARY KEY,
+  3      student_name VARCHAR2(50),
+  4      dept_id NUMBER
+  5  );
+CREATE TABLE Students (
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> INSERT INTO Students VALUES (101, 'Anu', 1);
+INSERT INTO Students VALUES (101, 'Anu', 1)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A345.SYS_C0034647) violated 
+
+
+SQL> 
+SQL> INSERT INTO Students VALUES (102, 'Bindu', 2);
+INSERT INTO Students VALUES (102, 'Bindu', 2)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A345.SYS_C0034647) violated 
+
+
+SQL> 
+SQL> INSERT INTO Students VALUES (103, 'Chitra', 3);
+INSERT INTO Students VALUES (103, 'Chitra', 3)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A345.SYS_C0034647) violated 
+
+
+SQL> 
+SQL> INSERT INTO Students VALUES (104, 'Divya', 1);
+INSERT INTO Students VALUES (104, 'Divya', 1)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A345.SYS_C0034647) violated 
+
+
+SQL> 
+SQL> INSERT INTO Students VALUES (105, 'Elan', 4);
+INSERT INTO Students VALUES (105, 'Elan', 4)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A345.SYS_C0034647) violated 
+
+
+SQL> 
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> CREATE TABLE Departments (
+  2      dept_id NUMBER PRIMARY KEY,
+  3      dept_name VARCHAR2(50)
+  4  );
+CREATE TABLE Departments (
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> INSERT INTO Departments VALUES (1, 'CSE');
+INSERT INTO Departments VALUES (1, 'CSE')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A345.SYS_C0034650) violated 
+
+
+SQL> 
+SQL> INSERT INTO Departments VALUES (2, 'ECE');
+INSERT INTO Departments VALUES (2, 'ECE')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A345.SYS_C0034650) violated 
+
+
+SQL> 
+SQL> INSERT INTO Departments VALUES (3, 'IT');
+INSERT INTO Departments VALUES (3, 'IT')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A345.SYS_C0034650) violated 
+
+
+SQL> 
+SQL> INSERT INTO Departments VALUES (5, 'MECH');
+INSERT INTO Departments VALUES (5, 'MECH')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A345.SYS_C0034650) violated 
+
+
+SQL> 
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SELECT * FROM Students;
+
+STUDENT_ID STUDENT_NAME                                          DEPT_ID        
+---------- -------------------------------------------------- ----------        
+       101 Anu                                                         1        
+       102 Bindu                                                       2        
+       103 Chitra                                                      3        
+       104 Divya                                                       1        
+       105 Elan                                                        4        
+
+SQL> SELECT * FROM Departments;
+
+   DEPT_ID DEPT_NAME                                                            
+---------- --------------------------------------------------                   
+         1 CSE                                                                  
+         2 ECE                                                                  
+         3 IT                                                                   
+         5 MECH                                                                 
+
+SQL> SELECT
+  2      s.student_id,
+  3      s.student_name,
+  4      d.dept_name
+  5  FROM Students s
+  6  INNER JOIN Departments d
+  7  ON s.dept_id = d.dept_id;
+
+STUDENT_ID STUDENT_NAME                                                         
+---------- --------------------------------------------------                   
+DEPT_NAME                                                                       
+--------------------------------------------------                              
+       101 Anu                                                                  
+CSE                                                                             
+                                                                                
+       104 Divya                                                                
+CSE                                                                             
+                                                                                
+       102 Bindu                                                                
+ECE                                                                             
+                                                                                
+
+STUDENT_ID STUDENT_NAME                                                         
+---------- --------------------------------------------------                   
+DEPT_NAME                                                                       
+--------------------------------------------------                              
+       103 Chitra                                                               
+IT                                                                              
+                                                                                
+
+SQL> SELECT
+  2      s.student_id,
+  3      s.student_name,
+  4      d.dept_name
+  5  FROM Students s
+  6  LEFT JOIN Departments d
+  7  ON s.dept_id = d.dept_id;
+
+STUDENT_ID STUDENT_NAME                                                         
+---------- --------------------------------------------------                   
+DEPT_NAME                                                                       
+--------------------------------------------------                              
+       104 Divya                                                                
+CSE                                                                             
+                                                                                
+       101 Anu                                                                  
+CSE                                                                             
+                                                                                
+       102 Bindu                                                                
+ECE                                                                             
+                                                                                
+
+STUDENT_ID STUDENT_NAME                                                         
+---------- --------------------------------------------------                   
+DEPT_NAME                                                                       
+--------------------------------------------------                              
+       103 Chitra                                                               
+IT                                                                              
+                                                                                
+       105 Elan                                                                 
+                                                                                
+                                                                                
+
+SQL> SELECT
+  2      s.student_id,
+  3      s.student_name,
+  4      d.dept_name
+  5  FROM Students s
+  6  RIGHT JOIN Departments d
+  7  ON s.dept_id = d.dept_id;
+
+STUDENT_ID STUDENT_NAME                                                         
+---------- --------------------------------------------------                   
+DEPT_NAME                                                                       
+--------------------------------------------------                              
+       101 Anu                                                                  
+CSE                                                                             
+                                                                                
+       104 Divya                                                                
+CSE                                                                             
+                                                                                
+       102 Bindu                                                                
+ECE                                                                             
+                                                                                
+
+STUDENT_ID STUDENT_NAME                                                         
+---------- --------------------------------------------------                   
+DEPT_NAME                                                                       
+--------------------------------------------------                              
+       103 Chitra                                                               
+IT                                                                              
+                                                                                
+                                                                                
+MECH                                                                            
+                                                                                
+
+SQL> SELECT
+  2      s.student_id,
+  3      s.student_name,
+  4      d.dept_name
+  5  FROM Students s
+  6  FULL OUTER JOIN Departments d
+  7  ON s.dept_id = d.dept_id;
+
+STUDENT_ID STUDENT_NAME                                                         
+---------- --------------------------------------------------                   
+DEPT_NAME                                                                       
+--------------------------------------------------                              
+       101 Anu                                                                  
+CSE                                                                             
+                                                                                
+       102 Bindu                                                                
+ECE                                                                             
+                                                                                
+       103 Chitra                                                               
+IT                                                                              
+                                                                                
+
+STUDENT_ID STUDENT_NAME                                                         
+---------- --------------------------------------------------                   
+DEPT_NAME                                                                       
+--------------------------------------------------                              
+       104 Divya                                                                
+CSE                                                                             
+                                                                                
+       105 Elan                                                                 
+                                                                                
+                                                                                
+                                                                                
+MECH                                                                            
+                                                                                
+
+6 rows selected.
+
+SQL> SELECT
+  2      s.student_name,
+  3      d.dept_name
+  4  FROM Students s
+  5  CROSS JOIN Departments d;
+
+STUDENT_NAME                                                                    
+--------------------------------------------------                              
+DEPT_NAME                                                                       
+--------------------------------------------------                              
+Anu                                                                             
+CSE                                                                             
+                                                                                
+Bindu                                                                           
+CSE                                                                             
+                                                                                
+Chitra                                                                          
+CSE                                                                             
+                                                                                
+
+STUDENT_NAME                                                                    
+--------------------------------------------------                              
+DEPT_NAME                                                                       
+--------------------------------------------------                              
+Divya                                                                           
+CSE                                                                             
+                                                                                
+Elan                                                                            
+CSE                                                                             
+                                                                                
+Anu                                                                             
+ECE                                                                             
+                                                                                
+
+STUDENT_NAME                                                                    
+--------------------------------------------------                              
+DEPT_NAME                                                                       
+--------------------------------------------------                              
+Bindu                                                                           
+ECE                                                                             
+                                                                                
+Chitra                                                                          
+ECE                                                                             
+                                                                                
+Divya                                                                           
+ECE                                                                             
+                                                                                
+
+STUDENT_NAME                                                                    
+--------------------------------------------------                              
+DEPT_NAME                                                                       
+--------------------------------------------------                              
+Elan                                                                            
+ECE                                                                             
+                                                                                
+Anu                                                                             
+IT                                                                              
+                                                                                
+Bindu                                                                           
+IT                                                                              
+                                                                                
+
+STUDENT_NAME                                                                    
+--------------------------------------------------                              
+DEPT_NAME                                                                       
+--------------------------------------------------                              
+Chitra                                                                          
+IT                                                                              
+                                                                                
+Divya                                                                           
+IT                                                                              
+                                                                                
+Elan                                                                            
+IT                                                                              
+                                                                                
+
+STUDENT_NAME                                                                    
+--------------------------------------------------                              
+DEPT_NAME                                                                       
+--------------------------------------------------                              
+Anu                                                                             
+MECH                                                                            
+                                                                                
+Bindu                                                                           
+MECH                                                                            
+                                                                                
+Chitra                                                                          
+MECH                                                                            
+                                                                                
+
+STUDENT_NAME                                                                    
+--------------------------------------------------                              
+DEPT_NAME                                                                       
+--------------------------------------------------                              
+Divya                                                                           
+MECH                                                                            
+                                                                                
+Elan                                                                            
+MECH                                                                            
+                                                                                
+
+20 rows selected.
+
+SQL> CREATE TABLE Employees (
+  2      emp_id NUMBER PRIMARY KEY,
+  3      emp_name VARCHAR2(50),
+  4      manager_id NUMBER
+  5  );
+CREATE TABLE Employees (
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> INSERT INTO Employees VALUES (1, 'Ravi', 3);
+
+1 row created.
+
+SQL> 
+SQL> INSERT INTO Employees VALUES (2, 'Sahana', 3);
+
+1 row created.
+
+SQL> 
+SQL> INSERT INTO Employees VALUES (3, 'Prakash', NULL);
+
+1 row created.
+
+SQL> 
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SELECT
+  2      e.emp_name AS Employee,
+  3      m.emp_name AS Manager
+  4  FROM Employees e
+  5  LEFT JOIN Employees m
+  6  ON e.manager_id = m.emp_id;
+
+EMPLOYEE                                                                        
+--------------------------------------------------                              
+MANAGER                                                                         
+--------------------------------------------------                              
+Ravi                                                                            
+Prakash                                                                         
+                                                                                
+Sahana                                                                          
+Prakash                                                                         
+                                                                                
+Prakash                                                                         
+                                                                                
+                                                                                
+
+SQL> SELECT
+  2      s.student_id,
+  3      s.student_name,
+  4      d.dept_name
+  5  FROM Students s
+  6  INNER JOIN Departments d
+  7  ON s.dept_id = d.dept_id
+  8  WHERE d.dept_name = 'CSE';
+
+STUDENT_ID STUDENT_NAME                                                         
+---------- --------------------------------------------------                   
+DEPT_NAME                                                                       
+--------------------------------------------------                              
+       101 Anu                                                                  
+CSE                                                                             
+                                                                                
+       104 Divya                                                                
+CSE                                                                             
+                                                                                
+
+SQL> SELECT
+  2      s.student_name
+  3  FROM Students s
+  4  INNER JOIN Departments d
+  5  ON s.dept_id = d.dept_id
+  6  WHERE d.dept_name = 'IT';
+
+STUDENT_NAME                                                                    
+--------------------------------------------------                              
+Chitra                                                                          
+
+SQL> SELECT
+  2      s.student_name,
+  3      d.dept_name
+  4  FROM Students s
+  5  INNER JOIN Departments d
+  6  ON s.dept_id = d.dept_id
+  7  ORDER BY d.dept_name ASC;
+
+STUDENT_NAME                                                                    
+--------------------------------------------------                              
+DEPT_NAME                                                                       
+--------------------------------------------------                              
+Anu                                                                             
+CSE                                                                             
+                                                                                
+Divya                                                                           
+CSE                                                                             
+                                                                                
+Bindu                                                                           
+ECE                                                                             
+                                                                                
+
+STUDENT_NAME                                                                    
+--------------------------------------------------                              
+DEPT_NAME                                                                       
+--------------------------------------------------                              
+Chitra                                                                          
+IT                                                                              
+                                                                                
+
+SQL> ORDER BY d.dept_name DESC;
+SP2-0734: unknown command beginning "ORDER BY d..." - rest of line ignored.
+SQL> SELECT
+  2      d.dept_name,
+  3      COUNT(s.student_id) AS total_students
+  4  FROM Departments d
+  5  LEFT JOIN Students s
+  6  ON d.dept_id = s.dept_id
+  7  GROUP BY d.dept_name;
+
+DEPT_NAME                                          TOTAL_STUDENTS               
+-------------------------------------------------- --------------               
+IT                                                              1               
+CSE                                                             2               
+MECH                                                            0               
+ECE                                                             1               
+
+SQL> spool off
