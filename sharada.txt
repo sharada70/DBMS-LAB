@@ -1,0 +1,44 @@
+SQL> create table customer(
+  2  customer_id int primary key,
+  3  customer_name varchar(30) not null,
+  4  customer_mailid varchar(38) unique,
+  5  customer_salary check(customer_salary>25000),
+  6  customer_location varchar(30) default 'bangalor'
+  7  );
+customer_salary check(customer_salary>25000),
+*
+ERROR at line 5:
+ORA-02263: need to specify the datatype for this column 
+
+
+SQL> create table customer(
+  2  customer_id int primary key,
+  3  customer_name varchar(30) not null,
+  4  customer_mailid varchar(38) unique,
+  5  customer_salary int check(customer_salary>25000),
+  6  customer_location varchar(30) default 'bangalor'
+  7  );
+
+Table created.
+
+SQL> insert into customer
+  2  (customer_id, customer_name, customer_mail, customer_salary, customer_location)
+  3  values(1,'ravi','ravi@gmail.com','30000');
+values(1,'ravi','ravi@gmail.com','30000')
+*
+ERROR at line 3:
+ORA-00947: not enough values 
+
+
+SQL> values(1,'ravi','ravi@gmail.com','30000',default);
+SP2-0734: unknown command beginning "values(1,'..." - rest of line ignored.
+SQL> 
+SQL> values(1,'ravi','ravi@gmail.com','30000','hyderabad');
+SP2-0734: unknown command beginning "values(1,'..." - rest of line ignored.
+SQL> values(1,'ravi','ravi@gmail.com','30000','hyderabad');
+SP2-0734: unknown command beginning "values(1,'..." - rest of line ignored.
+SQL> values(1,'ravi','ravi@gmail.com',30000,default);
+SP2-0734: unknown command beginning "values(1,'..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SQL> spool off
