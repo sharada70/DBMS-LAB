@@ -1,0 +1,470 @@
+SQL> select upper ('oracle database') from dual;
+
+UPPER('ORACLEDA                                                                 
+---------------                                                                 
+ORACLE DATABASE                                                                 
+
+SQL> select lower ('oracle database') from dual;
+
+LOWER('ORACLEDA                                                                 
+---------------                                                                 
+oracle database                                                                 
+
+SQL> select initcap ('oracle database management') from dual;
+
+INITCAP('ORACLEDATABASEMAN                                                      
+--------------------------                                                      
+Oracle Database Management                                                      
+
+SQL> select length ('database') from dual;
+
+LENGTH('DATABASE')                                                              
+------------------                                                              
+                 8                                                              
+
+SQL> select substr ('database',1,4) from dual;
+
+SUBS                                                                            
+----                                                                            
+data                                                                            
+
+SQL> select instr('database','A') from dual;
+
+INSTR('DATABASE','A')                                                           
+---------------------                                                           
+                    0                                                           
+
+SQL> select instr('DATABASE','A') from dual;
+
+INSTR('DATABASE','A')                                                           
+---------------------                                                           
+                    2                                                           
+
+SQL> select replace('oracle database','database','DBMS') from dual;
+
+REPLACE('OR                                                                     
+-----------                                                                     
+oracle DBMS                                                                     
+
+SQL> select concat ('oracle','database') from dual;
+
+CONCAT('ORACLE                                                                  
+--------------                                                                  
+oracledatabase                                                                  
+
+SQL> select trim ('oracle') from dual;
+
+TRIM('                                                                          
+------                                                                          
+oracle                                                                          
+
+SQL> select ltrim ('oracle') from dual;
+
+LTRIM(                                                                          
+------                                                                          
+oracle                                                                          
+
+SQL> select rtrim ('oracle') from dual;
+
+RTRIM(                                                                          
+------                                                                          
+oracle                                                                          
+
+SQL> select round (45.6789,2) from dual;
+
+ROUND(45.6789,2)                                                                
+----------------                                                                
+           45.68                                                                
+
+SQL> select trunc (45.6789,2) from dual;
+
+TRUNC(45.6789,2)                                                                
+----------------                                                                
+           45.67                                                                
+
+SQL> select ceil (45.2) from dual;
+
+CEIL(45.2)                                                                      
+----------                                                                      
+        46                                                                      
+
+SQL> select floor (45.8) from dual;
+
+FLOOR(45.8)                                                                     
+-----------                                                                     
+         45                                                                     
+
+SQL> select mod (10,3) from dual;
+
+ MOD(10,3)                                                                      
+----------                                                                      
+         1                                                                      
+
+SQL> select abs(-25) from dual;_
+  2  ;
+select abs(-25) from dual;_
+                         *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> select abs(-25) from dual;_
+  2  ;
+select abs(-25) from dual;_
+                         *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> select ABS(-25) from dual;
+
+  ABS(-25)                                                                      
+----------                                                                      
+        25                                                                      
+
+SQL> select power (2,3) from dual;
+
+POWER(2,3)                                                                      
+----------                                                                      
+         8                                                                      
+
+SQL> select SQRT (25) from dual;
+
+  SQRT(25)                                                                      
+----------                                                                      
+         5                                                                      
+
+SQL> select sign(-50) from dual;
+
+ SIGN(-50)                                                                      
+----------                                                                      
+        -1                                                                      
+
+SQL> select SYSDATA from dual;
+select SYSDATA from dual
+       *
+ERROR at line 1:
+ORA-00904: "SYSDATA": invalid identifier 
+
+
+SQL> select SYSDATE from dual;
+
+SYSDATE                                                                         
+---------                                                                       
+09-OCT-26                                                                       
+
+SQL> select current_data from dual;
+select current_data from dual
+       *
+ERROR at line 1:
+ORA-00904: "CURRENT_DATA": invalid identifier 
+
+
+SQL> SELECT CURRENT_DATE FROM dual;
+
+CURRENT_D                                                                       
+---------                                                                       
+09-OCT-26                                                                       
+
+SQL> SELECT ADD_MONTHS(SYSDATE, 3) from dual;
+
+ADD_MONTH                                                                       
+---------                                                                       
+09-JAN-27                                                                       
+
+SQL> SELECT MONTHS_BETWEEN( DATE '2026-12-01',DATE '2026-09-01') from dual;
+
+MONTHS_BETWEEN(DATE'2026-12-01',DATE'2026-09-01')                               
+-------------------------------------------------                               
+                                                3                               
+
+SQL> SELECT LAST_DAY(SYSDATE) from dual;
+
+LAST_DAY(                                                                       
+---------                                                                       
+31-OCT-26                                                                       
+
+SQL> SELECT NEXT_DAY(SYSDATE, 'MONDAY') from dual;
+
+NEXT_DAY(                                                                       
+---------                                                                       
+12-OCT-26                                                                       
+
+SQL> SELECT ROUND(SYSDATE, 'MONTH') from dual;
+
+ROUND(SYS                                                                       
+---------                                                                       
+01-OCT-26                                                                       
+
+SQL> SELECT TRUNC(SYSDATE, 'MONTH') from dual;
+
+TRUNC(SYS                                                                       
+---------                                                                       
+01-OCT-26                                                                       
+
+SQL> SELECT TO_CHAR(12345.67, '99,999.99') from dual;
+
+TO_CHAR(12                                                                      
+----------                                                                      
+ 12,345.67                                                                      
+
+SQL> SELECT TO_CHAR(SYSDATE, 'DD-MM-YYYY') from dual;
+
+TO_CHAR(SY                                                                      
+----------                                                                      
+09-10-2026                                                                      
+
+SQL> SELECT TO_DATE('25-09-2026', 'DD-MM-YYYY') from dual;
+
+TO_DATE('                                                                       
+---------                                                                       
+25-SEP-26                                                                       
+
+SQL> SELECT TO_NUMBER('500') + 100 from dual;
+
+TO_NUMBER('500')+100                                                            
+--------------------                                                            
+                 600                                                            
+
+SQL> CREATE TABLE students (
+  2      id NUMBER,
+  3      name VARCHAR2(20),
+  4      marks NUMBER
+  5  );
+CREATE TABLE students (
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> create table students (
+  2  id number,
+  3  name varchar (20),
+  4  marks number );
+create table students (
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> CREATE TABLE student (
+  2  id number,
+  3      name VARCHAR2(20),
+  4      marks NUMBER
+  5  );
+CREATE TABLE student (
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> create table stu (
+  2  id number,
+  3  name varchar (20),
+  4      marks NUMBER
+  5  );
+
+Table created.
+
+SQL> insert into stu values (1,'arun',80);
+
+1 row created.
+
+SQL> insert into stu values (2,'bala',70);
+
+1 row created.
+
+SQL> insert into stu values (3,'devi'90);
+insert into stu values (3,'devi'90)
+                                *
+ERROR at line 1:
+ORA-00917: missing comma 
+
+
+SQL> insert into stu values (3, 'devi',90);
+
+1 row created.
+
+SQL> insert into stu values (4, 'ravi', 60);
+
+1 row created.
+
+SQL> select * from stu;
+
+        ID NAME                      MARKS                                      
+---------- -------------------- ----------                                      
+         1 arun                         80                                      
+         2 bala                         70                                      
+         3 devi                         90                                      
+         4 ravi                         60                                      
+
+SQL> select count (*) from students;
+
+  COUNT(*)                                                                      
+----------                                                                      
+         5                                                                      
+
+SQL> select count (*) from stu;
+
+  COUNT(*)                                                                      
+----------                                                                      
+         4                                                                      
+
+SQL> select sum(marks) from stu;
+
+SUM(MARKS)                                                                      
+----------                                                                      
+       300                                                                      
+
+SQL> select avg (marks) from stu;_
+  2  select AVG (marks) from stu;
+select avg (marks) from stu;_
+                           *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> select AVG(marks) from stu;
+
+AVG(MARKS)                                                                      
+----------                                                                      
+        75                                                                      
+
+SQL> select MAX(marks) from stu;
+
+MAX(MARKS)                                                                      
+----------                                                                      
+        90                                                                      
+
+SQL> select min(marks) from stu;
+
+MIN(MARKS)                                                                      
+----------                                                                      
+        60                                                                      
+
+SQL> Create Tables
+  2  department
+  3  CREATE TABLE department (
+  4  dept_id NUMBER(3) PRIMARY KEY,
+  5  dept_name VARCHAR2(30) NOT NULL );
+Create Tables
+       *
+ERROR at line 1:
+ORA-00901: invalid CREATE command 
+
+
+SQL> CREATE TABLE department (
+  2  dept_id NUMBER(3) PRIMARY KEY,
+  3  dept_name VARCHAR2(30) NOT NULL );
+CREATE TABLE department (
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> CREATE TABLE dept (
+  2  dept_id NUMBER(3) PRIMARY KEY,
+  3  dept_name VARCHAR2(30) NOT NULL );
+
+Table created.
+
+SQL> CREATE TABLE student (
+  2  roll_no NUMBER(5) PRIMARY KEY,
+  3  name VARCHAR2(30) NOT NULL,
+  4  age NUMBER(2),
+  5  marks NUMBER(5,2),
+  6  dept_id NUMBER(3),
+  7  FOREIGN KEY (dept_id) REFERENCES
+  8  dept (dept_id)
+  9  );
+CREATE TABLE student (
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> CREATE TABLE stud (
+  2  roll_no NUMBER(5) PRIMARY KEY,
+  3  name VARCHAR2(30) NOT NULL,
+  4  age NUMBER(2),
+  5  marks NUMBER(5,2),
+  6  dept_id NUMBER(3),
+  7  FOREIGN KEY (dept_id) REFERENCES
+  8  dept (dept_id)
+  9  );
+
+Table created.
+
+SQL> dept data
+SP2-0042: unknown command "dept data" - rest of line ignored.
+SQL> INSERT INTO department VALUES (10, 'CSE');
+
+1 row created.
+
+SQL> INSERT INTO department VALUES (20, 'IT');
+
+1 row created.
+
+SQL> INSERT INTO department VALUES (30, 'ECE');
+
+1 row created.
+
+SQL> INSERT INTO department VALUES (40, 'MECH');
+
+1 row created.
+
+SQL> INSERT INTO department VALUES (50, 'CIVIL');
+
+1 row created.
+
+SQL> 
+SQL> INSERT INTO student VALUES (101, 'Arun', 20, 85, 10);
+INSERT INTO student VALUES (101, 'Arun', 20, 85, 10)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A345.SYS_C0030498) violated 
+
+
+SQL> INSERT INTO dept VALUES (20, 'IT');
+
+1 row created.
+
+SQL> INSERT INTO dept VALUES (30, 'ECE');
+
+1 row created.
+
+SQL> INSERT INTO dept VALUES (50, 'CIVIL');
+
+1 row created.
+
+SQL> INSERT INTO stud VALUES (101, 'Arun', 20, 85, 10);
+INSERT INTO stud VALUES (101, 'Arun', 20, 85, 10)
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A345.SYS_C0035720) violated - parent key not 
+found 
+
+
+SQL> INSERT INTO stud VALUES (101, 'Arun', 20, 85, 10);
+INSERT INTO stud VALUES (101, 'Arun', 20, 85, 10)
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A345.SYS_C0035720) violated - parent key not 
+found 
+
+
+SQL> INSERT INTO student VALUES (101, 'Arun', 20, 85, 10);
+INSERT INTO student VALUES (101, 'Arun', 20, 85, 10)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A345.SYS_C0030498) violated 
+
+
+SQL> INSERT INTO student VALUES (101, 'Arun', 20, 85, 10);
+INSERT INTO student VALUES (101, 'Arun', 20, 85, 10)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A345.SYS_C0030498) violated 
+
+
+SQL> spool off
