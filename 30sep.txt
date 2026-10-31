@@ -1,0 +1,141 @@
+SQL> create table deparetments (
+  2  dept_id number primary key,
+  3  dept_name varchar(20)
+  4  );
+
+Table created.
+
+SQL> insert into departments values (1,'cse');
+insert into departments values (1,'cse')
+            *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> insert into departments values (1,'cse');
+insert into departments values (1,'cse')
+            *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> INSERT INTO Departments VALUES(1,'cse');
+INSERT INTO Departments VALUES(1,'cse')
+            *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> select table_name from user_tables;
+
+TABLE_NAME                                                                      
+------------------------------                                                  
+EMP1                                                                            
+STUDENT                                                                         
+CUSTOMER                                                                        
+DEPARTMENT                                                                      
+DEPARETMENTS                                                                    
+STD                                                                             
+
+6 rows selected.
+
+SQL> insert into departments values (1, 'cse');
+insert into departments values (1, 'cse')
+            *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> create table students(
+  2  student_id number primary key,
+  3  studen_name varchar(20)
+  4  );
+
+Table created.
+
+SQL> select table_name from user_tables;
+
+TABLE_NAME                                                                      
+------------------------------                                                  
+EMP1                                                                            
+STUDENT                                                                         
+CUSTOMER                                                                        
+DEPARTMENT                                                                      
+DEPARETMENTS                                                                    
+STD                                                                             
+STUDENTS                                                                        
+
+7 rows selected.
+
+SQL> INSERT INTO Departments VALUES (1, 'CSE');
+INSERT INTO Departments VALUES (1, 'CSE')
+            *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> drop old tables
+  2  );
+drop old tables
+     *
+ERROR at line 1:
+ORA-00950: invalid DROP option 
+
+
+SQL> drop table students,departments
+  2  ;
+drop table students,departments
+                   *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> drop table students;
+
+Table dropped.
+
+SQL> drop table departments;
+drop table departments
+           *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> drop table employees;
+drop table employees
+           *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> drop table departments;
+drop table departments
+           *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> DROP TABLE Students;
+DROP TABLE Students
+           *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> DROP TABLE Departments;
+DROP TABLE Departments
+           *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> DROP TABLE Employees;
+DROP TABLE Employees
+           *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> soopl off
+SP2-0042: unknown command "soopl off" - rest of line ignored.
+SQL> spool e:\db.txt
