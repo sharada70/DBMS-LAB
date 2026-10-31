@@ -1,0 +1,358 @@
+SQL> CREATE TABLE Student (
+  2      Student_ID INT PRIMARY KEY,
+  3      Student_Name VARCHAR2(50) NOT NULL,
+  4      Department VARCHAR2(10) NOT NULL,
+  5      Semester INT CHECK (Semester BETWEEN 1 AND 8),
+  6      Marks INT CHECK (Marks BETWEEN 0 AND 100),
+  7      City VARCHAR2(30),
+  8      Email VARCHAR2(50) UNIQUE
+  9  );
+CREATE TABLE Student (
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> INSERT INTO Student VALUES
+  2  (101, 'Arun', 'CSE', 4, 85, 'Chennai', 'arun@gmail.com');
+INSERT INTO Student VALUES
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> 
+SQL> INSERT INTO Student VALUES
+  2  (102, 'Priya', 'IT', 4, 78, 'Madurai', 'priya@gmail.com');
+INSERT INTO Student VALUES
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> 
+SQL> INSERT INTO Student VALUES
+  2  (103, 'Karthik', 'CSE', 4, 92, 'Coimbatore', 'karthik@gmail.com');
+INSERT INTO Student VALUES
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> 
+SQL> INSERT INTO Student VALUES
+  2  (104, 'Divya', 'ECE', 4, 74, 'Chennai', 'divya@gmail.com');
+INSERT INTO Student VALUES
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> 
+SQL> INSERT INTO Student VALUES
+  2  (105, 'Rahul', 'IT', 4, 88, 'Salem', 'rahul@gmail.com');
+INSERT INTO Student VALUES
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> 
+SQL> INSERT INTO Student VALUES
+  2  (106, 'Meena', 'CSE', 4, 69, 'Trichy', 'meena@gmail.com');
+INSERT INTO Student VALUES
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> 
+SQL> INSERT INTO Student VALUES
+  2  (107, 'Sanjay', 'ECE', 4, 81, 'Madurai', 'sanjay@gmail.com');
+INSERT INTO Student VALUES
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> 
+SQL> INSERT INTO Student VALUES
+  2  (108, 'Anitha', 'CSE', 4, 95, 'Chennai', 'anitha@gmail.com');
+INSERT INTO Student VALUES
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> 
+SQL> COMMIT;SELECT * FROM Student;
+COMMIT;SELECT * FROM Student
+      *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> SELECT * FROM Student;
+
+STUDENT_ID NAME                                                                 
+---------- --------------------------------------------------                   
+EMAIL                                                     AGE                   
+-------------------------------------------------- ----------                   
+CITY                                                                            
+--------------------------------------                                          
+       101 priya                                                                
+a@gmail.com                                                18                   
+chennai                                                                         
+                                                                                
+        27 rama                                                                 
+                                                                                
+chennai                                                                         
+
+STUDENT_ID NAME                                                                 
+---------- --------------------------------------------------                   
+EMAIL                                                     AGE                   
+-------------------------------------------------- ----------                   
+CITY                                                                            
+--------------------------------------                                          
+                                                                                
+        15 priya                                                                
+                                                                                
+chennai                                                                         
+                                                                                
+
+SQL> INSERT INTO Student VALUES
+  2  (101, 'Vijay', 'IT', 4, 80, 'Chennai', 'vijay1@gmail.com');
+INSERT INTO Student VALUES
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> INSERT INTO Student VALUES
+  2  (112, NULL, 'CSE', 4, 80, 'Chennai', 'test1@gmail.com');
+INSERT INTO Student VALUES
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> ALTER TABLE Student
+  2  ADD Phone VARCHAR2(15);
+
+Table altered.
+
+SQL> ALTER TABLE Student
+  2  ADD CONSTRAINT UQ_PHONE UNIQUE (Phone);
+
+Table altered.
+
+SQL> ALTER TABLE Student
+  2  RENAME COLUMN City TO Address;
+
+Table altered.
+
+SQL> INSERT INTO Student
+  2  (Student_ID, Student_Name, Department, Semester,
+  3   Marks, Address, Email)
+  4  VALUES
+  5  (109, 'Vijay', 'IT', 4, 82, 'Chennai', 'vijay@gmail.com');
+ Marks, Address, Email)
+ *
+ERROR at line 3:
+ORA-00904: "MARKS": invalid identifier 
+
+
+SQL> INSERT INTO Student
+  2  (Student_ID, Student_Name, Department, Semester,
+  3   Marks, Address, Email)
+  4  VALUES
+  5  (110, 'Sneha', 'CSE', 4, 89, 'Salem', 'sneha@gmail.com');
+ Marks, Address, Email)
+ *
+ERROR at line 3:
+ORA-00904: "MARKS": invalid identifier 
+
+
+SQL> 
+SQL> INSERT INTO Student
+  2  (Student_ID, Student_Name, Department, Semester,
+  3   Marks, Address, Email)
+  4  VALUES
+  5  (111, 'Naveen', 'ECE', 4, 76, 'Trichy', 'naveen@gmail.com');
+ Marks, Address, Email)
+ *
+ERROR at line 3:
+ORA-00904: "MARKS": invalid identifier 
+
+
+SQL> 
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> UPDATE Student
+  2  SET Marks = 90
+  3  WHERE Student_ID = 101;
+SET Marks = 90
+    *
+ERROR at line 2:
+ORA-00904: "MARKS": invalid identifier 
+
+
+SQL> UPDATE Student
+  2  SET Department = 'CSE'
+  3  WHERE Student_ID = 102;
+SET Department = 'CSE'
+    *
+ERROR at line 2:
+ORA-00904: "DEPARTMENT": invalid identifier 
+
+
+SQL> UPDATE Student
+  2  SET Address = 'Bengaluru'
+  3  WHERE Address = 'Chennai';
+
+0 rows updated.
+
+SQL> UPDATE Student
+  2  SET Department = 'CSE'
+  3  WHERE Student_ID = 102;
+SET Department = 'CSE'
+    *
+ERROR at line 2:
+ORA-00904: "DEPARTMENT": invalid identifier 
+
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> DELETE FROM Student
+  2  WHERE Student_ID = 106;
+
+0 rows deleted.
+
+SQL> CREATE TABLE Department (
+  2      Dept_ID INT PRIMARY KEY,
+  3      Dept_Name VARCHAR2(30) UNIQUE NOT NULL,
+  4      HOD VARCHAR2(50) NOT NULL
+  5  );
+CREATE TABLE Department (
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> INSERT INTO Department VALUES
+  2  (1, 'CSE', 'Dr. Kumar');
+INSERT INTO Department VALUES
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> 
+SQL> INSERT INTO Department VALUES
+  2  (2, 'IT', 'Dr. Priya');
+INSERT INTO Department VALUES
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> 
+SQL> INSERT INTO Department VALUES
+  2  (3, 'ECE', 'Dr. Ravi');
+INSERT INTO Department VALUES
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> 
+SQL> INSERT INTO Department VALUES
+  2  (4, 'EEE', 'Dr. Meena');
+INSERT INTO Department VALUES
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> 
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> ALTER TABLE Student
+  2  DROP CONSTRAINT UQ_PHONE;
+
+Table altered.
+
+SQL> ALTER TABLE Student
+  2  DROP COLUMN Phone;
+
+Table altered.
+
+SQL> TRUNCATE TABLE Department;
+TRUNCATE TABLE Department
+               *
+ERROR at line 1:
+ORA-02266: unique/primary keys in table referenced by enabled foreign keys 
+
+
+SQL> DROP TABLE Department;
+DROP TABLE Department
+           *
+ERROR at line 1:
+ORA-02449: unique/primary keys in table referenced by foreign keys 
+
+
+SQL> CREATE TABLE students (
+  2      reg_no NUMBER PRIMARY KEY,
+  3      name VARCHAR2(50),
+  4      department VARCHAR2(20),
+  5      marks NUMBER
+  6  );
+CREATE TABLE students (
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> GRANT SELECT ON students TO student1;
+
+Grant succeeded.
+
+SQL> SELECT * FROM students;
+
+STUDENT_ID STUDENT_NAME                                          DEPT_ID        
+---------- -------------------------------------------------- ----------        
+       101 Anu                                                         1        
+       102 Bindu                                                       2        
+       103 Chitra                                                      3        
+       104 Divya                                                       1        
+       105 Elan                                                        4        
+
+SQL> GRANT ALL ON students TO student1;
+
+Grant succeeded.
+
+SQL> REVOKE UPDATE
+  2  ON students
+  3  FROM student1;
+
+Revoke succeeded.
+
+SQL> REVOKE SELECT
+  2  ON students
+  3  FROM student1;
+
+Revoke succeeded.
+
+SQL> REVOKE ALL
+  2  ON students
+  3  FROM student1;
+
+Revoke succeeded.
+
+SQL> spool off
