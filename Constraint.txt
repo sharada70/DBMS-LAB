@@ -1,0 +1,425 @@
+SQL> CREATE TABLE STUDENT (
+  2      Student_ID INT PRIMARY KEY,
+  3      Name VARCHAR2(50)
+  4  );
+CREATE TABLE STUDENT (
+             *
+
+SQL> INSERT INTO STUDENT
+  2  VALUES (101, 'Arun');
+INSERT INTO STUDENT
+           
+SQL> INSERT INTO STUDENT
+  2  VALUES (101, 'Priya');
+INSERT INTO STUDENT
+       
+SQL> SELECT * FROM STUDENT;
+
+STUDENT_ID NAME                                                                 
+---------- --------------------------------------------------                   
+EMAIL                                                     AGE                   
+-------------------------------------------------- ----------                   
+ADDRESS                                                                         
+--------------------------------------                                          
+       101 priya                                                                
+a@gmail.com                                                18                   
+chennai                                                                         
+                                                                                
+        27 rama                                                                 
+                                                                                
+chennai                                                                         
+
+STUDENT_ID NAME                                                                 
+---------- --------------------------------------------------                   
+EMAIL                                                     AGE                   
+-------------------------------------------------- ----------                   
+ADDRESS                                                                         
+--------------------------------------                                          
+                                                                                
+        15 priya                                                                
+                                                                                
+chennai                                                                         
+                                                                                
+
+SQL> CREATE TABLE STUDENT (
+  2      Student_ID INT PRIMARY KEY,
+  3      Name VARCHAR2(50) NOT NULL
+  4  );
+CREATE TABLE STUDENT (
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> INSERT INTO STUDENT
+  2  VALUES (101, 'Arun');
+INSERT INTO STUDENT
+         
+SQL> INSERT INTO STUDENT
+  2  VALUES (102, NULL);
+INSERT INTO STUDENT
+
+SQL> SELECT * FROM STUDENT;
+
+STUDENT_ID NAME                                                                 
+---------- --------------------------------------------------                   
+EMAIL                                                     AGE                   
+-------------------------------------------------- ----------                   
+ADDRESS                                                                         
+--------------------------------------                                          
+       101 priya                                                                
+a@gmail.com                                                18                   
+chennai                                                                         
+                                                                                
+        27 rama                                                                 
+                                                                                
+chennai                                                                         
+
+STUDENT_ID NAME                                                                 
+---------- --------------------------------------------------                   
+EMAIL                                                     AGE                   
+-------------------------------------------------- ----------                   
+ADDRESS                                                                         
+--------------------------------------                                          
+                                                                                
+        15 priya                                                                
+                                                                                
+chennai                                                                         
+                                                                                
+
+SQL> CREATE TABLE STUDENT (
+  2      Student_ID INT PRIMARY KEY,
+  3      Name VARCHAR2(50),
+  4      Email VARCHAR2(100) UNIQUE
+  5  );
+CREATE TABLE STUDENT (
+SQL> INSERT INTO STUDENT
+  2  VALUES (101, 'Arun', 'arun@gmail.com');
+INSERT INTO STUDENT
+ 
+SQL> INSERT INTO STUDENT
+  2  VALUES (102, 'Priya', 'arun@gmail.com');
+INSERT INTO STUDENT
+
+SQL> SELECT * FROM STUDENT;
+
+STUDENT_ID NAME                                                                 
+---------- --------------------------------------------------                   
+EMAIL                                                     AGE                   
+-------------------------------------------------- ----------                   
+ADDRESS                                                                         
+--------------------------------------                                          
+       101 priya                                                                
+a@gmail.com                                                18                   
+chennai                                                                         
+                                                                                
+        27 rama                                                                 
+                                                                                
+chennai                                                                         
+
+STUDENT_ID NAME                                                                 
+---------- --------------------------------------------------                   
+EMAIL                                                     AGE                   
+-------------------------------------------------- ----------                   
+ADDRESS                                                                         
+--------------------------------------                                          
+                                                                                
+        15 priya                                                                
+                                                                                
+chennai                                                                         
+                                                                                
+
+SQL> CREATE TABLE STUDENT (
+  2      Student_ID INT PRIMARY KEY,
+  3      Name VARCHAR2(50),
+  4      Age INT CHECK (Age >= 18)
+  5  );
+CREATE TABLE STUDENT (
+
+SQL> INSERT INTO STUDENT
+  2  VALUES (101, 'Arun', 20);
+INSERT INTO STUDENT
+ 
+SQL> INSERT INTO STUDENT
+  2  VALUES (102, 'Priya', 16);
+INSERT INTO STUDENT
+            *
+ERROR at line 1:
+ORA-00947: not enough values 
+
+
+SQL> SELECT * FROM STUDENT;
+
+STUDENT_ID NAME                                                                 
+---------- --------------------------------------------------                   
+EMAIL                                                     AGE                   
+-------------------------------------------------- ----------                   
+ADDRESS                                                                         
+--------------------------------------                                          
+       101 priya                                                                
+a@gmail.com                                                18                   
+chennai                                                                         
+                                                                                
+        27 rama                                                                 
+                                                                                
+chennai                                                                         
+
+STUDENT_ID NAME                                                                 
+---------- --------------------------------------------------                   
+EMAIL                                                     AGE                   
+-------------------------------------------------- ----------                   
+ADDRESS                                                                         
+--------------------------------------                                          
+                                                                                
+        15 priya                                                                
+                                                                                
+chennai                                                                         
+                                                                                
+
+SQL> CREATE TABLE STUDENT (
+  2      Student_ID INT PRIMARY KEY,
+  3      Name VARCHAR2(50),
+  4      City VARCHAR2(30) DEFAULT 'Chennai'
+  5  );
+CREATE TABLE STUDENT (
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> INSERT INTO STUDENT
+  2  (Student_ID, Name)
+  3  VALUES (101, 'Arun');
+INSERT INTO STUDENT
+
+SQL> SELECT * FROM STUDENT;
+
+STUDENT_ID NAME                                                                 
+---------- --------------------------------------------------                   
+EMAIL                                                     AGE                   
+-------------------------------------------------- ----------                   
+ADDRESS                                                                         
+--------------------------------------                                          
+       101 priya                                                                
+a@gmail.com                                                18                   
+chennai                                                                         
+                                                                                
+        27 rama                                                                 
+                                                                                
+chennai                                                                         
+
+STUDENT_ID NAME                                                                 
+---------- --------------------------------------------------                   
+EMAIL                                                     AGE                   
+-------------------------------------------------- ----------                   
+ADDRESS                                                                         
+--------------------------------------                                          
+                                                                                
+        15 priya                                                                
+                                                                                
+chennai                                                                         
+                                                                                
+
+SQL> INSERT INTO STUDENT
+  2  VALUES (102, 'Priya', 'Madurai');
+INSERT INTO STUDENT
+
+SQL> SELECT * FROM STUDENT;
+
+STUDENT_ID NAME                                                                 
+---------- --------------------------------------------------                   
+EMAIL                                                     AGE                   
+-------------------------------------------------- ----------                   
+ADDRESS                                                                         
+--------------------------------------                                          
+       101 priya                                                                
+a@gmail.com                                                18                   
+chennai                                                                         
+                                                                                
+        27 rama                                                                 
+                                                                                
+chennai                                                                         
+
+STUDENT_ID NAME                                                                 
+---------- --------------------------------------------------                   
+EMAIL                                                     AGE                   
+-------------------------------------------------- ----------                   
+ADDRESS                                                                         
+--------------------------------------                                          
+                                                                                
+        15 priya                                                                
+                                                                                
+chennai                                                                         
+                                                                                
+
+SQL> CREATE TABLE DEPARTMENT (
+  2      Dept_ID INT PRIMARY KEY,
+  3      Dept_Name VARCHAR2(30)
+  4  );
+CREATE TABLE DEPARTMENT (
+
+SQL> INSERT INTO DEPARTMENT
+  2  VALUES (1, 'CSE');
+
+1 row created.
+
+SQL> 
+SQL> INSERT INTO DEPARTMENT
+  2  VALUES (2, 'ECE');
+
+1 row created.
+
+SQL> 
+SQL> INSERT INTO DEPARTMENT
+  2  VALUES (3, 'IT');
+INSERT INTO DEPARTMENT
+SQL> 
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SELECT * FROM DEPARTMENT;
+
+   DEPT_ID DEPT_NAME                                                            
+---------- ------------------------------                                       
+        27 cse                                                                  
+        15 ece                                                                  
+         3 mech                                                                 
+         1 CSE                                                                  
+         2 ECE                                                                  
+
+SQL> CREATE TABLE STUDENT (
+  2      Student_ID INT PRIMARY KEY,
+  3      Name VARCHAR2(50),
+  4      Dept_ID INT,
+  5      FOREIGN KEY (Dept_ID)
+  6      REFERENCES DEPARTMENT(Dept_ID)
+  7  );
+CREATE TABLE STUDENT (
+           
+SQL> INSERT INTO STUDENT
+  2  VALUES (101, 'Arun', 1);
+INSERT INTO STUDENT
+        
+
+SQL> INSERT INTO STUDENT
+  2  VALUES (102, 'Priya', 10);
+INSERT INTO STUDENT
+        
+SQL> SELECT * FROM STUDENT;
+
+STUDENT_ID NAME                                                                 
+---------- --------------------------------------------------                   
+EMAIL                                                     AGE                   
+-------------------------------------------------- ----------                   
+ADDRESS                                                                         
+--------------------------------------                                          
+       101 priya                                                                
+a@gmail.com                                                18                   
+chennai                                                                         
+                                                                                
+        27 rama                                                                 
+                                                                                
+chennai                                                                         
+
+STUDENT_ID NAME                                                                 
+---------- --------------------------------------------------                   
+EMAIL                                                     AGE                   
+-------------------------------------------------- ----------                   
+ADDRESS                                                                         
+--------------------------------------                                          
+                                                                                
+        15 priya                                                                
+                                                                                
+chennai                                                                         
+                                                                                
+
+SQL> CREATE TABLE DEPARTMENT (
+  2      Dept_ID INT PRIMARY KEY,
+  3      Dept_Name VARCHAR2(30)
+  4  );
+CREATE TABLE DEPARTMENT (
+ 
+
+SQL> INSERT INTO DEPARTMENT VALUES (1, 'CSE');
+INSERT INTO DEPARTMENT VALUES (1, 'CSE')
+
+SQL> 
+SQL> INSERT INTO DEPARTMENT VALUES (2, 'ECE');
+INSERT INTO DEPARTMENT VALUES (2, 'ECE')
+
+SQL> 
+SQL> INSERT INTO DEPARTMENT VALUES (3, 'IT');
+INSERT INTO DEPARTMENT VALUES (3, 'IT')
+
+SQL> 
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> CREATE TABLE STUDENT (
+  2      Student_ID INT PRIMARY KEY,
+  3      Name VARCHAR2(50) NOT NULL,
+  4      Email VARCHAR2(100) UNIQUE,
+  5      Age INT CHECK (Age >= 18),
+  6      City VARCHAR2(30) DEFAULT 'Chennai',
+  7      Dept_ID INT,
+  8      FOREIGN KEY (Dept_ID)
+  9      REFERENCES DEPARTMENT(Dept_ID)
+ 10  );
+CREATE TABLE STUDENT (
+
+SQL> INSERT INTO STUDENT
+  2  VALUES
+  3  (101, 'Arun', 'arun@gmail.com', 20, 'Madurai', 1);
+INSERT INTO STUDENT
+
+
+SQL> 
+SQL> INSERT INTO STUDENT
+  2  VALUES
+  3  (102, 'Priya', 'priya@gmail.com', 19, 'Chennai', 2);
+INSERT INTO STUDENT
+   
+
+SQL> 
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> INSERT INTO STUDENT
+  2  (Student_ID, Name, Email, Age, Dept_ID)
+  3  VALUES
+  4  (103, 'Karthik', 'karthik@gmail.com', 21, 3);
+(Student_ID, Name, Email, Age, Dept_ID)
+   
+
+SQL> SELECT * FROM STUDENT;
+
+STUDENT_ID NAME                                                                 
+---------- --------------------------------------------------                   
+EMAIL                                                     AGE                   
+-------------------------------------------------- ----------                   
+ADDRESS                                                                         
+--------------------------------------                                          
+       101 priya                                                                
+a@gmail.com                                                18                   
+chennai                                                                         
+                                                                                
+        27 rama                                                                 
+                                                                                
+chennai                                                                         
+
+STUDENT_ID NAME                                                                 
+---------- --------------------------------------------------                   
+EMAIL                                                     AGE                   
+-------------------------------------------------- ----------                   
+ADDRESS                                                                         
+--------------------------------------                                          
+                                                                                
+        15 priya                                                                
+                                                                                
+chennai                                                                         
+                                                                                
+
+SQL> spool off
